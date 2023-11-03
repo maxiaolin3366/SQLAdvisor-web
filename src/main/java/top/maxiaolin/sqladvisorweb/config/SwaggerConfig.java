@@ -1,13 +1,5 @@
-package com.tongbaninfo.logsearch.common.config;
+package top.maxiaolin.sqladvisorweb.config;
 
-/**
- * 类或者接口描述
- *
- * @author : shenww
- * @ClassName : SwaggerConfig
- * @date : 2022/6/17  18:28
- * @Version ：1.0
- */
 
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +18,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author abner
+ */
 @Configuration
 @EnableSwagger2
 @EnableKnife4j
@@ -33,23 +28,18 @@ public class SwaggerConfig {
 
     @Bean
     public Docket createRestApi() {
-        ParameterBuilder tokenPar = new ParameterBuilder();
-        List<Parameter> pars = new ArrayList<Parameter>();
-        tokenPar.name("Authorization").defaultValue("Bearer ").description("请输入token").modelRef(new ModelRef("string")).parameterType("header").required(true).build();
-        pars.add(tokenPar.build());
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com"))
+                .apis(RequestHandlerSelectors.basePackage("top"))
                 .paths(PathSelectors.any())
-                .build()
-               .globalOperationParameters(pars);
+                .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("中台日志系统")
-                .description("项目API")
+                .title("美团点评sql索引优化建议")
+                .description("基于SQLAdvisor编译打包后的http")
                 .version("1.0")
                 .build();
     }
