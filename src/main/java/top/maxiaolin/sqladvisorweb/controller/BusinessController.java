@@ -25,7 +25,7 @@ public class BusinessController {
 	public String advisor(@RequestBody BusinessDTO businessDTO) throws IOException, InterruptedException {
 		//./sqladvisor -h 127.0.0.1  -P 3306  -u root -p 'root' -d sttb_efficacy -q "select id from dictionary" -v 1
 		String[] command = new String[]{"./sqladvisor", "-h", businessDTO.getHost(), "-P", businessDTO.getPort(),
-				"-u", businessDTO.getUsername(), "-p", businessDTO.getPassword(), "-d", businessDTO.getDatabase(), "-q", businessDTO.getSql(), "-v", businessDTO.getVersion()};
+				"-u", businessDTO.getUsername(), "-p", businessDTO.getPassword(), "-d", businessDTO.getDatabase(), "-q", businessDTO.getSql(), "-v", businessDTO.getVerbose()};
 		log.info("执行命令：{}", command);
 		Process process = Runtime.getRuntime().exec(command);
 

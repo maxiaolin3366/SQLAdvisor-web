@@ -21,8 +21,8 @@ public class BusinessDTO {
 	private String password;
 	@ApiModelProperty(value = "数据库名称", example = "test")
 	private String database;
-	@ApiModelProperty(value = "需要分析的sql", example = "select * from xxx")
+	@ApiModelProperty(value = "需要分析的sql，多条使用;隔开，字符串参数使用单引号", example = "select name from a where a.name='1';select code from a where a.code='2'")
 	private String sql;
-	@ApiModelProperty(value = "版本信息", example = "1")
-	private String version;
+	@ApiModelProperty(value = "1:output logs 0:output nothing", example = "1")
+	private String verbose;
 }
